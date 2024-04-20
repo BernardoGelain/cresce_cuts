@@ -3,6 +3,7 @@ import { ThemeContextProvider } from "./contexts/themeContext";
 import Routes from "./routes/Routes";
 import { persistor, store } from "./lib/redux/store";
 import { Provider } from "react-redux";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
   return (
