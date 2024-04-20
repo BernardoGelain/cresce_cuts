@@ -10,9 +10,7 @@ export default function SidebarMenu() {
         <img src={Logo} alt="Logo" />
       </LogoContainer>
       <Item text="Lista de Descontos" linkTo={"/"} />
-      <Item text="Leve + Pague -" linkTo={"/bulk"} />
-      <Item text="De: - Por:" linkTo={"/fixed"} />
-      <Item text="Percentual" linkTo={"/percent"} />
+      <Item text="Novo Desconto" linkTo={"/discount"} />
     </ContainerSidebar>
   );
 }

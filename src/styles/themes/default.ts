@@ -1,7 +1,7 @@
 export const defaultTheme = {
   colors: {
     primary: "#007FBA",
-    background: "#FFFFFF",
+    background: "#F5F7F5",
     backgroundMenu: "#007FBA",
     borderButtonHeader: "#E3E3E3",
     backgroundFooter: "#FFFFFF",
