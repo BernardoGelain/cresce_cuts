@@ -1,6 +1,5 @@
 import { Card } from "@/components/Card/Card";
 import SidebarMenu from "@/components/SidebarMenu/SidebarMenu";
-import { Discount } from "@/models/Discount";
 import { RootState } from "@/models/RootState";
 import {
   Button,
@@ -13,11 +12,11 @@ import {
 } from "@/styles/layout";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-
 import { Form } from "react-bootstrap";
 import { useState } from "react";
 import { Filters } from "./styles";
 import { useFilteredData } from "@/hooks/useFilteredData";
+import DiscountsTable from "@/components/DiscountsTable/DiscountsTable";
 
 export default function Home() {
   const navigate = useNavigate();
@@ -88,9 +87,8 @@ export default function Home() {
                 </Form.Select>
               </Form.Group>
             </Filters>
-            {filteredData.map((discount: Discount) => {
-              return <span>{discount.name}</span>;
-            })}
+
+            <DiscountsTable discounts={filteredData} />
           </Card>
         </LayoutContainer>
       </Layout>
