@@ -22,19 +22,6 @@ export default function Discount() {
   const dispatch: any = useDispatch();
   const [validated, setValidated] = useState(false);
 
-  //bulk
-  const [price, setPrice] = useState();
-  const [unit, setUnit] = useState();
-  const [pay, setPay] = useState();
-
-  //fixed
-  const [fixedPay, setFixedPay] = useState();
-  const [fixedPrice, setFixedPrice] = useState();
-
-  //percent
-  const [percent, setPercent] = useState();
-  const [percentPrice, setPercentPrice] = useState();
-
   const [formData, setFormData] = useState({
     active: true,
     name: "",
@@ -43,17 +30,17 @@ export default function Discount() {
     start: "",
     end: "",
     bulk: {
-      price: price,
-      unit: unit,
-      pay: pay,
+      price: "",
+      unit: "",
+      pay: "",
     },
     fixed: {
-      fixedPay: fixedPay,
-      fixedPrice: fixedPrice,
+      fixedPay: "",
+      fixedPrice: "",
     },
     percent: {
-      percent: percent,
-      percentPrice: percentPrice,
+      percent: "",
+      percentPrice: "",
     },
   });
   const handleInputChange = (e: any) => {
@@ -78,17 +65,17 @@ export default function Discount() {
       start: "",
       end: "",
       bulk: {
-        price: price,
-        unit: unit,
-        pay: pay,
+        price: "",
+        unit: "",
+        pay: "",
       },
       fixed: {
-        fixedPay: fixedPay,
-        fixedPrice: fixedPrice,
+        fixedPay: "",
+        fixedPrice: "",
       },
       percent: {
-        percent: percent,
-        percentPrice: percentPrice,
+        percent: "",
+        percentPrice: "",
       },
     });
 
@@ -166,21 +153,21 @@ export default function Discount() {
               </Form.Group>
               {formData.type == "1" && (
                 <FixedDiscount
-                  setFixedPay={setFixedPay}
-                  setFixedPrice={setFixedPrice}
+                  setFixedPay={setFormData}
+                  setFixedPrice={setFormData}
                 />
               )}
               {formData.type == "2" && (
                 <PercentDiscount
-                  setPercent={setPercent}
-                  setPercentPrice={setPercentPrice}
+                  setPercent={setFormData}
+                  setPercentPrice={setFormData}
                 />
               )}
               {formData.type == "3" && (
                 <BulkDiscount
-                  setPay={setPay}
-                  setPrice={setPrice}
-                  setUnit={setUnit}
+                  setPay={setFormData}
+                  setPrice={setFormData}
+                  setUnit={setFormData}
                 />
               )}
               <ContainerItems>

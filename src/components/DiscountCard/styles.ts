@@ -21,6 +21,7 @@ export const Image = styled.img`
   height: 70px;
   object-fit: cover;
   border-radius: 5px;
+  padding: 4px;
   border: 1px solid ${({ theme }) => theme.colors.stripe};
 `;
 export const Td = styled.td`

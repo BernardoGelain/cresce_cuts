@@ -1,5 +1,6 @@
 import { Form } from "react-bootstrap";
 import { ContainerItems } from "../styles";
+import { Discount } from "@/models/Discount";
 
 type Props = {
   setPercentPrice: (e: any) => void;
@@ -9,6 +10,27 @@ export default function PercentDiscount({
   setPercentPrice,
   setPercent,
 }: Props) {
+  const handlePercentChange = (e: any) => {
+    const value = e.target.value;
+    setPercent((prevState: Discount) => ({
+      ...prevState,
+      percent: {
+        ...prevState.percent,
+        percent: value,
+      },
+    }));
+  };
+
+  const handlePercentPriceChange = (e: any) => {
+    const value = e.target.value;
+    setPercentPrice((prevState: Discount) => ({
+      ...prevState,
+      percent: {
+        ...prevState.percent,
+        percentPrice: value,
+      },
+    }));
+  };
   return (
     <ContainerItems>
       <Form.Group
@@ -19,7 +41,7 @@ export default function PercentDiscount({
         <Form.Control
           required
           type="number"
-          onChange={(e: any) => setPercentPrice(e.target.value)}
+          onChange={handlePercentPriceChange}
         />
       </Form.Group>
       <Form.Group
@@ -31,7 +53,7 @@ export default function PercentDiscount({
           required
           type="number"
           max={100}
-          onChange={(e: any) => setPercent(e.target.value)}
+          onChange={handlePercentChange}
         />
       </Form.Group>
     </ContainerItems>

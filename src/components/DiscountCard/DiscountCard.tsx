@@ -7,12 +7,16 @@ import returnDiscountType from "@/utils/returnDiscountType";
 import { Form } from "react-bootstrap";
 import formatDate from "@/utils/formatDate";
 import { useFetchProduct } from "@/hooks/useFetchProduct";
+import ModalDiscount from "../ModalDiscount/ModalDiscount";
+import { useState } from "react";
 
 type Props = {
   discount: Discount;
 };
+
 export default function DiscountCard({ discount }: Props) {
   const { product } = useFetchProduct({ id: discount.id });
+  const [show, setShow] = useState(false);
 
   return (
     <CardContainer>
@@ -47,9 +51,15 @@ export default function DiscountCard({ discount }: Props) {
       <Td>
         <div>
           <Form.Check type="switch" readOnly checked={discount.active} />
-          <EyeIcon src={Eye} />
+          <EyeIcon src={Eye} onClick={() => setShow(true)} />
         </div>
       </Td>
+      <ModalDiscount
+        discount={discount}
+        product={product}
+        handleClose={() => setShow(false)}
+        show={show}
+      />
     </CardContainer>
   );
 }
