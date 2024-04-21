@@ -9,27 +9,88 @@ import {
   TitleCardContainer,
   TitleContainer,
 } from "@/styles/layout";
-import { Form } from "react-bootstrap";
+import { Alert, Form } from "react-bootstrap";
 import { ContainerForm, ContainerItems } from "./styles";
 import { useState } from "react";
+import BulkDiscount from "./Components/BulkDiscount";
+import FixedDiscount from "./Components/FixedDiscount";
+import PercentDiscount from "./Components/PercentDiscount";
+import { useDispatch } from "react-redux";
+import { addNewDiscount } from "@/lib/redux/reducers/cartReducer";
 
-export default function BulkDiscount() {
+export default function Discount() {
+  const dispatch: any = useDispatch();
   const [validated, setValidated] = useState(false);
 
-  const [active, setActive] = useState(false);
-  const [name, setName] = useState("");
-  const [description, setDescription] = useState("");
-  const [type, setType] = useState("1");
-  const [start, setStart] = useState("");
-  const [end, setEnd] = useState("");
+  //bulk
+  const [price, setPrice] = useState();
+  const [unit, setUnit] = useState();
+  const [pay, setPay] = useState();
+
+  //fixed
+  const [fixedPay, setFixedPay] = useState();
+  const [fixedPrice, setFixedPrice] = useState();
+
+  //percent
+  const [percent, setPercent] = useState();
+  const [percentPrice, setPercentPrice] = useState();
+
+  const [formData, setFormData] = useState({
+    active: true,
+    name: "",
+    description: "",
+    type: "1",
+    start: "",
+    end: "",
+    bulk: {
+      price: price,
+      unit: unit,
+      pay: pay,
+    },
+    fixed: {
+      fixedPay: fixedPay,
+      fixedPrice: fixedPrice,
+    },
+    percent: {
+      percent: percent,
+      percentPrice: percentPrice,
+    },
+  });
+  const handleInputChange = (e: any) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
 
   const handleSubmit = (event: any) => {
     event.preventDefault();
     const form = event.currentTarget;
 
     if (form.checkValidity() === false) {
-      event.stopPropagation();
+      return;
     }
+    const discount = formData;
+    dispatch(addNewDiscount({ discount }));
+    setFormData({
+      active: true,
+      name: "",
+      description: "",
+      type: "1",
+      start: "",
+      end: "",
+      bulk: {
+        price: price,
+        unit: unit,
+        pay: pay,
+      },
+      fixed: {
+        fixedPay: fixedPay,
+        fixedPrice: fixedPrice,
+      },
+      percent: {
+        percent: percent,
+        percentPrice: percentPrice,
+      },
+    });
 
     setValidated(true);
   };
@@ -51,7 +112,10 @@ export default function BulkDiscount() {
               <Form.Check
                 type="switch"
                 label="Ativo"
-                onChange={() => setActive(!active)}
+                onChange={() =>
+                  setFormData({ ...formData, active: !formData.active })
+                }
+                checked={formData.active}
               />
             </TitleCardContainer>
             <ContainerForm>
@@ -63,7 +127,9 @@ export default function BulkDiscount() {
                 <Form.Control
                   required
                   type="text"
-                  onChange={(e: any) => setName(e.target.value)}
+                  name="name"
+                  value={formData.name}
+                  onChange={handleInputChange}
                 />
               </Form.Group>
               <Form.Group
@@ -75,7 +141,9 @@ export default function BulkDiscount() {
                 <Form.Control
                   required
                   type="text"
-                  onChange={(e: any) => setDescription(e.target.value)}
+                  value={formData.description}
+                  name="description"
+                  onChange={handleInputChange}
                 />
               </Form.Group>
 
@@ -86,21 +154,44 @@ export default function BulkDiscount() {
                 <Form.Label>Tipo do desconto</Form.Label>
                 <Form.Select
                   aria-label="Default select example"
-                  onChange={(e: any) => setType(e.target.value)}
-                  defaultValue={type}
+                  value={formData.type}
+                  name="type"
+                  onChange={handleInputChange}
+                  defaultValue={formData.type}
                 >
                   <option value="1">De: - Por:</option>
                   <option value="2">Porcentagem</option>
                   <option value="3">Leve + Pague -</option>
                 </Form.Select>
               </Form.Group>
+              {formData.type == "1" && (
+                <FixedDiscount
+                  setFixedPay={setFixedPay}
+                  setFixedPrice={setFixedPrice}
+                />
+              )}
+              {formData.type == "2" && (
+                <PercentDiscount
+                  setPercent={setPercent}
+                  setPercentPrice={setPercentPrice}
+                />
+              )}
+              {formData.type == "3" && (
+                <BulkDiscount
+                  setPay={setPay}
+                  setPrice={setPrice}
+                  setUnit={setUnit}
+                />
+              )}
               <ContainerItems>
                 <Form.Group controlId="exampleForm.Control requiredInput1">
                   <Form.Label>Data de Ativacão</Form.Label>
                   <Form.Control
                     required
                     type="date"
-                    onChange={(e: any) => setStart(e.target.value)}
+                    value={formData.start}
+                    name="start"
+                    onChange={handleInputChange}
                   />
                 </Form.Group>
                 <Form.Group controlId="exampleForm.Control requiredInput1">
@@ -108,7 +199,9 @@ export default function BulkDiscount() {
                   <Form.Control
                     required
                     type="date"
-                    onChange={(e: any) => setEnd(e.target.value)}
+                    name="end"
+                    value={formData.end}
+                    onChange={handleInputChange}
                   />
                 </Form.Group>
               </ContainerItems>
@@ -117,8 +210,11 @@ export default function BulkDiscount() {
                 <Form.Control type="file" size="lg" />
               </Form.Group>
               <div className="buttonContainer">
-                <Button type="submit">Submit form</Button>
+                <Button type="submit">Salvar</Button>
               </div>
+              {validated && (
+                <Alert variant={"success"}>Novo desconto criado!</Alert>
+              )}
             </ContainerForm>
           </Form>
         </Card>
