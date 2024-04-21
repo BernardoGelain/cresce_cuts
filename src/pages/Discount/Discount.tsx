@@ -11,18 +11,36 @@ import {
 } from "@/styles/layout";
 import { Alert, Form } from "react-bootstrap";
 import { ContainerForm, ContainerItems } from "./styles";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import BulkDiscount from "./Components/BulkDiscount";
 import FixedDiscount from "./Components/FixedDiscount";
 import PercentDiscount from "./Components/PercentDiscount";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addNewDiscount } from "@/lib/redux/reducers/cartReducer";
+import { useParams } from "react-router-dom";
+
+import { RootState } from "@/models/RootState";
+import { Discount as DiscountType } from "@/models/Discount";
 
 export default function Discount() {
   const dispatch: any = useDispatch();
   const [validated, setValidated] = useState(false);
+  const { id } = useParams();
+  const discounts = useSelector((state: RootState) => state.cart.discounts);
+
+  useEffect(() => {
+    if (id) {
+      const discountToEdit = discounts.find(
+        (item: DiscountType) => item.id === +id
+      );
+      if (discountToEdit) {
+        setFormData(discountToEdit);
+      }
+    }
+  }, [id, discounts]);
 
   const [formData, setFormData] = useState({
+    id: null,
     active: true,
     name: "",
     description: "",
@@ -58,6 +76,7 @@ export default function Discount() {
     const discount = formData;
     dispatch(addNewDiscount({ discount }));
     setFormData({
+      id: null,
       active: true,
       name: "",
       description: "",
@@ -155,12 +174,14 @@ export default function Discount() {
                 <FixedDiscount
                   setFixedPay={setFormData}
                   setFixedPrice={setFormData}
+                  discount={formData}
                 />
               )}
               {formData.type == "2" && (
                 <PercentDiscount
                   setPercent={setFormData}
                   setPercentPrice={setFormData}
+                  discount={formData}
                 />
               )}
               {formData.type == "3" && (
@@ -168,6 +189,7 @@ export default function Discount() {
                   setPay={setFormData}
                   setPrice={setFormData}
                   setUnit={setFormData}
+                  discount={formData}
                 />
               )}
               <ContainerItems>

@@ -5,4 +5,6 @@ export const Container = styled.div`
   border-radius: 11px;
   width: 100%;
   padding: 10px;
+  max-height: 75vh;
+  overflow-y: scroll;
 `;

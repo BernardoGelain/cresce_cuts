@@ -7,7 +7,7 @@ export default function Routes() {
     <BrowserRouter>
       <RRDRouter>
         <Route path="/" element={<Home />} />
-        <Route path="/discount" element={<Discount />} />
+        <Route path="/discount/:id?" element={<Discount />} />
       </RRDRouter>
     </BrowserRouter>
   );

@@ -1,6 +1,6 @@
 export interface Discount {
   active: boolean;
-  id: number;
+  id: number | null;
   name: string;
   description: string;
   type: string;

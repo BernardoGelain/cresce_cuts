@@ -4,6 +4,7 @@ import { Button as PrimaryButton, Text } from "@/styles/layout";
 import { Button, Modal } from "react-bootstrap";
 import { Body, Footer, Image, TextContainer, Title } from "./styles";
 import { formatCurrency } from "@/utils/formatCurrency";
+import { useNavigate } from "react-router-dom";
 
 type Props = {
   discount: Discount;
@@ -18,6 +19,7 @@ export default function ModalDiscount({
   show,
   handleClose,
 }: Props) {
+  const navigate = useNavigate();
   return (
     <Modal show={show} onHide={handleClose} centered>
       <Modal.Header closeButton style={{ borderBottom: "2px solid #007FBA" }}>
@@ -79,7 +81,11 @@ export default function ModalDiscount({
       </Modal.Body>
       <Modal.Footer style={{ borderTop: "0px transparent" }}>
         <Footer>
-          <Button id={"edit"} variant="outline-primary">
+          <Button
+            id={"edit"}
+            variant="outline-primary"
+            onClick={() => navigate(`/discount/${discount.id}`)}
+          >
             Editar
           </Button>
           <PrimaryButton onClick={handleClose}>Fechar</PrimaryButton>

@@ -5,10 +5,12 @@ import { Discount } from "@/models/Discount";
 type Props = {
   setPercentPrice: (e: any) => void;
   setPercent: (e: any) => void;
+  discount: Discount;
 };
 export default function PercentDiscount({
   setPercentPrice,
   setPercent,
+  discount,
 }: Props) {
   const handlePercentChange = (e: any) => {
     const value = e.target.value;
@@ -42,6 +44,7 @@ export default function PercentDiscount({
           required
           type="number"
           onChange={handlePercentPriceChange}
+          value={discount.percent.percentPrice}
         />
       </Form.Group>
       <Form.Group
@@ -53,6 +56,7 @@ export default function PercentDiscount({
           required
           type="number"
           max={100}
+          value={discount.percent.percent}
           onChange={handlePercentChange}
         />
       </Form.Group>

@@ -5,8 +5,13 @@ import { Discount } from "@/models/Discount";
 type Props = {
   setFixedPrice: (e: any) => void;
   setFixedPay: (e: any) => void;
+  discount: Discount;
 };
-export default function FixedDiscount({ setFixedPrice, setFixedPay }: Props) {
+export default function FixedDiscount({
+  setFixedPrice,
+  setFixedPay,
+  discount,
+}: Props) {
   const handleFixedPayChange = (e: any) => {
     const value = e.target.value;
     setFixedPrice((prevState: Discount) => ({
@@ -38,6 +43,7 @@ export default function FixedDiscount({ setFixedPrice, setFixedPay }: Props) {
           required
           type="number"
           onChange={handleFixedPriceChange}
+          value={discount.fixed.fixedPrice}
         />
       </Form.Group>
       <Form.Group
@@ -45,7 +51,12 @@ export default function FixedDiscount({ setFixedPrice, setFixedPay }: Props) {
         controlId="exampleForm.Control requiredInput1"
       >
         <Form.Label>Preço "POR"</Form.Label>
-        <Form.Control required type="number" onChange={handleFixedPayChange} />
+        <Form.Control
+          required
+          type="number"
+          onChange={handleFixedPayChange}
+          value={discount.fixed.fixedPay}
+        />
       </Form.Group>
     </ContainerItems>
   );

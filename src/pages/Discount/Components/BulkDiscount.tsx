@@ -6,8 +6,14 @@ type Props = {
   setPrice: (e: any) => void;
   setUnit: (e: any) => void;
   setPay: (e: any) => void;
+  discount: Discount;
 };
-export default function BulkDiscount({ setPrice, setPay, setUnit }: Props) {
+export default function BulkDiscount({
+  setPrice,
+  setPay,
+  setUnit,
+  discount,
+}: Props) {
   const handleBulkPriceChange = (e: any) => {
     const value = e.target.value;
     setPrice((prevState: Discount) => ({
@@ -47,21 +53,36 @@ export default function BulkDiscount({ setPrice, setPay, setUnit }: Props) {
         controlId="exampleForm.Control requiredInput1"
       >
         <Form.Label>Preço</Form.Label>
-        <Form.Control required type="number" onChange={handleBulkPriceChange} />
+        <Form.Control
+          required
+          type="number"
+          onChange={handleBulkPriceChange}
+          value={discount.bulk.price}
+        />
       </Form.Group>
       <Form.Group
         className="mb-3"
         controlId="exampleForm.Control requiredInput1"
       >
         <Form.Label>Leve</Form.Label>
-        <Form.Control required type="number" onChange={handleBulkUnitChange} />
+        <Form.Control
+          required
+          type="number"
+          onChange={handleBulkUnitChange}
+          value={discount.bulk.unit}
+        />
       </Form.Group>
       <Form.Group
         className="mb-3"
         controlId="exampleForm.Control requiredInput1"
       >
         <Form.Label>Pague</Form.Label>
-        <Form.Control required type="number" onChange={handleBulkPayChange} />
+        <Form.Control
+          required
+          type="number"
+          onChange={handleBulkPayChange}
+          value={discount.bulk.pay}
+        />
       </Form.Group>
     </Container3Items>
   );
