@@ -6,16 +6,19 @@ import { Text } from "@/styles/layout";
 import returnDiscountType from "@/utils/returnDiscountType";
 import { Form } from "react-bootstrap";
 import formatDate from "@/utils/formatDate";
+import { useFetchProduct } from "@/hooks/useFetchProduct";
 
 type Props = {
   discount: Discount;
 };
 export default function DiscountCard({ discount }: Props) {
+  const { product } = useFetchProduct({ id: discount.id });
+
   return (
     <CardContainer>
       <NameDiv>
         <IconName src={Icon} />
-        <Image src="https://img.freepik.com/fotos-gratis/exibicao-de-fones-de-ouvido-de-musica-levitando_23-2149817607.jpg?w=740&t=st=1713725808~exp=1713726408~hmac=04b1ff776908acd7e567202bc12a7797fa23b631882185c221ebae13d1208dc5" />
+        <Image src={product?.image} />
         <Text $fontSize="18px" $color="#6F767E">
           {discount.name}
         </Text>

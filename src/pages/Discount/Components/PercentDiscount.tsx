@@ -30,6 +30,7 @@ export default function PercentDiscount({
         <Form.Control
           required
           type="number"
+          max={100}
           onChange={(e: any) => setPercent(e.target.value)}
         />
       </Form.Group>

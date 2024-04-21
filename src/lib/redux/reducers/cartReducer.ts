@@ -9,7 +9,10 @@ const cartSlice: Slice = createSlice({
   //reducers para manipular estado
   reducers: {
     addNewDiscount: (state, action) => {
-      state.discounts.push(action.payload.discount);
+      state.discounts.push({
+        ...action.payload.discount,
+        id: state.discounts.length + 1,
+      });
     },
     removeTest: (state) => {
       state.testState.pop();

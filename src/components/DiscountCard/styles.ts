@@ -17,8 +17,8 @@ export const IconName = styled.img`
   width: 12px;
 `;
 export const Image = styled.img`
-  width: 60px;
-  height: 60px;
+  width: 70px;
+  height: 70px;
   object-fit: cover;
   border-radius: 5px;
   border: 1px solid ${({ theme }) => theme.colors.stripe};
