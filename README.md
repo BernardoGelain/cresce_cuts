@@ -1,52 +1,51 @@
-# Desafio para Desenvolvedor Pleno - Gestor de Campanhas de Desconto
+# cresce_cuts
 
-Este desafio é destinado a desenvolvedores que dominam **React** ou **Flutter**. O objetivo é desenvolver uma aplicação que permite aos usuários criar e gerenciar campanhas de desconto em produtos, utilizando dados da [Fake Store API](https://fakestoreapi.com).
+## Descrição
 
-## Objetivo
+cresce_cuts é uma aplicação React utilizando TypeScript, Redux Toolkit, React Router, e outras bibliotecas populares para criar uma aplicação web moderna e saciar o teste proposto pelo time Cresce Vendas.
 
-Desenvolver uma aplicação web (React) ou um aplicativo móvel (Flutter) para gerenciar campanhas de desconto.
+## Instalação
 
-## Requisitos Técnicos Mínimos
+Certifique-se de ter o Node.js e o npm instalados em seu sistema. Você pode baixá-los e instalá-los a partir do [site oficial do Node.js](https://nodejs.org/).
 
-### React
-- Utilização avançada de **React Hooks** e **Context API** para gerenciamento de estado global.
-- Uso do framework **Next.js**.
-- Estilização com **CSS-in-JS** ou frameworks como **Tailwind CSS**.
-- Desenvolvimento de testes com **Jest** e/ou **React Testing Library** para componentes chave.
+1. Clone este repositório:
+   git clone https://github.com/BernardoGelain/cresce_cuts.git
 
-### Flutter
-- Proficiência com **Flutter** para desenvolvimento de UI, gestão de estado (preferencialmente usando **Mobx**) e navegação entre telas.
-- Estruturação do projeto em módulos reutilizáveis utilizando **Flutter Modular**.
-- Desenvolvimento de testes utilizando o **Flutter Test** para componentes chave.
+2. Navegue até o diretório do projeto: cd cresce_cuts
 
-### Comum a Ambas as Tecnologias
-- Integração com a **Fake Store API** para listar produtos e detalhes.
-- Uso de **Git** para controle de versão e **GitHub** para hospedagem do código.
+3. Instale as dependências: npm install
 
-## Funcionalidades
+## Uso
 
-- **Listagem de Produtos:** Exibir produtos disponíveis para desconto, incluindo imagens, preços e descrições.
-- **Criação de Descontos:** Interface para gerenciamento de descontos a produtos específicos, definindo o desconto como: de/por ou leve + page.
-- **Visualização de Campanhas:** Permite visualizar e editar campanhas de desconto criadas, mostrando o preço original e o preço com desconto.
-- **Persistência de Dados:** As campanhas de desconto devem ser salvas localmente para persistir entre as sessões do navegador ou dispositivo.
+Após instalar as dependências, você pode iniciar o servidor de desenvolvimento usando o seguinte comando:
+npm run dev
 
-## Submissão e Avaliação
+Este comando iniciará um servidor de desenvolvimento local e abrirá a aplicação em seu navegador padrão. Se o navegador não abrir automaticamente, você pode acessar a aplicação em [http://localhost:5173](http://localhost:5173).
 
-- Cada candidato deve criar sua branch sendo seu nome completo (exemplo thyago_peres_carvalho).
-- Cada candidato deve criar seu próprio **Pull Request (PR)** para avaliação da implementação.
-- Cada PR deve incluir uma explicação detalhada de como executar o código.
-- Garantir um versionamento mínimo com commits claros e descritivos que refletem o progresso do desenvolvimento.
+Para construir a aplicação para produção, você pode executar o seguinte comando: npm run build
 
-## Orientações Adicionais
+Este comando criará uma versão otimizada da aplicação pronta para implantação. Os arquivos da aplicação serão gerados no diretório `dist/`.
 
-- **Documentação:** Incluir um arquivo `README.md` detalhado no repositório GitHub com instruções para instalação, configuração e execução do projeto.
-- **Código Limpo:** O código deve ser bem organizado, seguindo as melhores práticas de desenvolvimento e padrões de codificação.
-- **UI/UX:** A interface deve ser intuitiva, agradável e fácil de usar, proporcionando uma boa experiência ao usuário.
+## Scripts Adicionais
 
-## Suporte
+- `npm run lint`: Executa o linter ESLint para verificar e corrigir problemas de estilo de código.
+- `npm run preview`: Inicia um servidor para pré-visualizar a versão de produção da aplicação localmente.
 
-Se tiver dúvidas durante o desenvolvimento, por favor, entre em contato através do e-mail [thyago@crescevendas.com](mailto:thyago@crescevendas.com).
+## Tecnologias Utilizadas
 
-## Nota
+- React
+- TypeScript
+- Redux Toolkit
+- React Router
+- Axios
+- Bootstrap
+- Styled Components
+- Eslint
 
-As telas desenvolvidas pelo design foram enviadas para cada candidato conforme tecnologia escolhida no formulário.
+## Contribuição
+
+Sinta-se à vontade para enviar pull requests e propor melhorias. Para maiores mudanças, abra uma issue primeiro para discutir o que você gostaria de mudar.
+
+## Licença
+
+Este projeto está licenciado sob a [MIT License](https://opensource.org/licenses/MIT).

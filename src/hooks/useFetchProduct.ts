@@ -3,7 +3,7 @@ import { Product } from "@/models/Product";
 import { useCallback, useEffect, useState } from "react";
 
 type Props = {
-  id: number;
+  id: number | null;
 };
 
 export const useFetchProduct = ({ id }: Props) => {
