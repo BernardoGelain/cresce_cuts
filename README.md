@@ -28,11 +28,11 @@ Este comando criará uma versão otimizada da aplicação pronta para implantaç
 
 ## Testes
 
-Para testar a aplicação, você pode usar o comando npm test. Este comando inicia o servidor de desenvolvimento (se necessário) e executa os testes automatizados.
+Para testar a aplicação, você pode usar o comando <b>npm test</b>. Este comando inicia o servidor de desenvolvimento (se necessário) e executa os testes automatizados.
 
-Certifique-se de que todas as dependências do projeto estejam instaladas. Se você ainda não as instalou, pode fazer isso executando npm install.
+Certifique-se de que todas as dependências do projeto estejam instaladas. Se você ainda não as instalou, pode fazer isso executando <b>npm install</b>.
 
-Depois, execute o comando npm test no terminal. Isso iniciará o servidor de desenvolvimento, se necessário, e executará os testes automatizados.
+Depois, execute o comando <b>npm test</b> no terminal. Isso iniciará o servidor de desenvolvimento, se necessário, e executará os testes automatizados.
 
 ## Scripts Adicionais
 
