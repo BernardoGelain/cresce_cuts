@@ -23,17 +23,6 @@ export default function DiscountsTable({ discounts }: Props) {
         {discounts.map((discount: Discount) => {
           return <DiscountCard discount={discount} />;
         })}
-        {/* {discounts.map((discount: Discount) => {
-          return (
-            <tr>
-              <td>{discount.name}</td>
-              <td>{returnDiscountType(+discount.type)}</td>
-              <td>{discount.start}</td>
-              <td>{discount.end}</td>
-              <td>{discount.active}</td>
-            </tr>
-          );
-        })} */}
       </tbody>
     </Table>
   );
