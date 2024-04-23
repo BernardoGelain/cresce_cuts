@@ -44,6 +44,7 @@ export default function FixedDiscount({
           type="number"
           onChange={handleFixedPriceChange}
           value={discount.fixed.fixedPrice}
+          name={"fixed_price"}
         />
       </Form.Group>
       <Form.Group
@@ -56,6 +57,7 @@ export default function FixedDiscount({
           type="number"
           onChange={handleFixedPayChange}
           value={discount.fixed.fixedPay}
+          name={"fixed_pay"}
         />
       </Form.Group>
     </ContainerItems>

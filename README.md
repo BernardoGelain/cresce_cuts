@@ -26,6 +26,14 @@ Para construir a aplicação para produção, você pode executar o seguinte com
 
 Este comando criará uma versão otimizada da aplicação pronta para implantação. Os arquivos da aplicação serão gerados no diretório `dist/`.
 
+## Testes
+
+Para testar a aplicação, você pode usar o comando npm test. Este comando inicia o servidor de desenvolvimento (se necessário) e executa os testes automatizados.
+
+Certifique-se de que todas as dependências do projeto estejam instaladas. Se você ainda não as instalou, pode fazer isso executando npm install.
+
+Depois, execute o comando npm test no terminal. Isso iniciará o servidor de desenvolvimento, se necessário, e executará os testes automatizados.
+
 ## Scripts Adicionais
 
 - `npm run lint`: Executa o linter ESLint para verificar e corrigir problemas de estilo de código.

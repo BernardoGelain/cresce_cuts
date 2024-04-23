@@ -13,20 +13,20 @@ import {
 } from "redux-persist";
 
 const persistConfig = {
-  key: "cart", //chave principal para persistencia do estado
-  storage, // Configuração do armazenamento (neste caso, localStorage)
+  key: "cart",
+  storage,
 };
 
 const persistedReducer = persistReducer(persistConfig, cartReducer);
 
 export const store = configureStore({
   reducer: {
-    cart: persistedReducer, //reducer para o carrinho
+    cart: persistedReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: {
-        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER], // Ações ignoradas durante a verificação de serialização(Não sei o que é)
+        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
     }),
 });

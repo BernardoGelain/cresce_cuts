@@ -46,7 +46,7 @@ export default function Home() {
               <Text $fontSize="20px" $color="#4c4c4c">
                 Desconto cadastrados
               </Text>
-              <Button onClick={() => navigate("/discount")}>
+              <Button onClick={() => navigate("/discount")} name="new_discount">
                 Novo Desconto
               </Button>
             </TitleCardContainer>
